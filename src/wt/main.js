@@ -3,7 +3,7 @@ import os from "os";
 import { getDirectory } from "../getDirectory.js";
 
 const __dirname = getDirectory(import.meta.url);
-const coresLength = os.availableParallelism();
+const coresLength = os.cpus().length;
 
 const promisesArr = [];
 
@@ -27,7 +27,7 @@ const performCalculations = async () => {
       });
     });
     promisesArr.push(promise);
-  }
+  };
 
   const res = await Promise.all(promisesArr);
 
